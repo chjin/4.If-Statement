@@ -12,17 +12,17 @@
             left: 50px;
             top: 120px;
         }
-        #bar{
+/*        #bar{
             position: absolute;
             left: 50px;
             top: 190px;
             width: 500px;
             height: 20px;
             background: #F30;
-        }
+        }*/
         #panel{
             width: 600px;
-            height: 300px;
+            height: 400px;
             border: 1px solid #999;
             postion: relative;
         }
@@ -47,20 +47,34 @@
             */
             $("#btnStart").click(function(){
                 //1)값 입력
-                var value=window.prompt("x좌표 값 입력해주세요.",0);
+                //var value=window.prompt("x좌표 값 입력해주세요.",0);
                 //2)문자==>숫자로 명시적 형변환
-                value=parseInt(value);
+                //value=parseInt(value);
                 //3)비교
                 //<0  ==> 0보다 큰 값을 입력해 주세요.
                 //>480 ==> 480보다 작은 값을 입력해 주세요.
-                if(value>=0 && value<=480){
+                var x=parseInt($("#inputX").val());
+                var y=parseInt($("#inputY").val());
+
+                if((x>=0 && x<=500) && y>=0 && y<=290){
+                    $fish.css({
+                       left:x,
+                       top:y
+                    });
+                } else{
+                    alert("입력된 값이 너무 큽니다. 다시 입력해 주세요.");
+                    var x=parseInt($("#inputX").val(""));
+                    var y=parseInt($("#inputY").val(""));
+                }
+
+/*                if(value>=0 && value<=480){
                     //물고기 움직이기
                     $fish.css("left",value);
                 } else if(value<0){
                     alert("0보다 큰 값을 입력해 주세요.");
                 } else{
                     alert("480보다 작은 값을 입력해 주세요.");
-                }
+                }*/
             });
         });
     </script>
@@ -68,10 +82,15 @@
 </head>
 <body>
     <div id="panel">
-        <div id="bar"></div>
+
         <img src="fish.jpg" id="fish">
     </div>
     <div id="nav">
+        <label>X 값 입력 : </label>
+        <input id="inputX">
+        <br>
+        <label>Y 값 입력 : </label>
+        <input id="inputY"><br>
         <button id="btnStart">
             물고기 움직이기
         </button>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.체크박스 만들기</title>
+    <style>
+        body{
+            font-size: 16pt;
+        }
+        .d_checkbox{
+            position: relative;
+            left: 100px;
+            top: 100px;
+        }
+        .d_checkbox .checkbox{
+            width: 20px;
+            height: 15px;
+            float: left;
+            background: url("resources/Checkbox-checked.png") no-repeat;
+        }
+        .d_checkbox .checkbox.check{
+            background: url("resources/Checkbox-unchecked.png") no-repeat;
+        }
+    </style>
+    <script src="libs/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var bCheck=false;
+            var $chk=$(".d_checkbox .checkbox");
+            $(".d_checkbox").click(function(){
+               //클릭할때마다 현재 상태 값 반전(토글)
+                console.log("click");
+               bCheck=!bCheck;
+               if(bCheck==true){
+                   $chk.addClass("check");
+                   //미체크 상태==>체크 상태로.
+                   //클래스를 동적으로 추가.
+               } else{
+                   $chk.removeClass("check");
+               }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="d_checkbox">
+        <div class="checkbox"></div>
+        <div class="label">
+            체크박스-여기를 클릭해 보세요.
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
